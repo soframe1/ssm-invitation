@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+namespace： 命名空间, 唯一的，不能重复
+namesapce: 必须要跟接口的全路径完全一样！
+-->
+<mapper namespace="cn.kgc.demo.dao.InvitationMapper">
+
+    <select id="getInvitationByName" resultType="cn.kgc.demo.pojo.Invitation">
+        select * from invitation
+        <where>
+            <if test="name != null and name != ''">
+                and title like "%"#{name}"%"
+            </if>
+        </where>
+        order by createdate desc
+    </select>
+</mapper>
